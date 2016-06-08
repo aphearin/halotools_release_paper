@@ -120,7 +120,7 @@ In the subsections below we outline each of these sub-packages in turn, though w
 \label{subsection:sim_manager}
 %---------------------------
 
-One of the most tedious tasks in simulation analysis is the initial process of getting started with a halo catalog: reading large data files storing the halos (typically ASCII-formatted), making cuts on halos, adding additional columns, and storing the reduced and value-added catalog on disk for later use. In our experience with simulation analysis, one of the most common sources of bugs comes from these initial bookkeeping exercises.
+One of the most tedious tasks in simulation analysis is the initial process of getting started with a halo catalog: reading large data files storing the halos (typically ASCII-formatted), making cuts on halos, adding additional columns, and storing the reduced and value-added catalog on disk for later use. In our experience with simulation analysis, one of the most common sources of errors comes from these initial bookkeeping exercises.
 
 \begin{figure*}
 \center
@@ -198,7 +198,14 @@ In choosing component models, users are not restricted to the set of features th
 %---------------------------
 
 
-In the analysis of halo and (mock) galaxy catalogs, many of the same calculations are performed over and over again. How many pairs of points are separated by some distance $r$? What is the two-point correlation function of some sample of points? What is the host halo mass of some sample of subhalos? What is the local environmental density of some collection of galaxies? It is common to calculate the answers to these and other similar questions in an MCMC-type analysis, when high-performance is paramount. Even outside of the context of likelihood analyses, the sheer size of present-day cosmological simulations presents a formidable computational challenge to evaluate such functions in a reasonable runtime. There is also the notorious complicating nuisance of properly accounting for the periodic boundary conditions of a simulation. Much research time has been spent by many different researchers writing their own private versions of these calculations, writing code that is not extensible as it was developed making hard assumptions that are only applicable to the immediate problem at hand.
+In the analysis of halo and (mock) galaxy catalogs, many of the same calculations are performed over and over again. 
+\bit
+\item How many pairs of points are separated by some distance $r$? 
+\item What is the two-point correlation function of some sample of points? 
+\item What are the host halo masses of some sample of subhalos? 
+\item What is the local environmental density of some collection of galaxies? 
+\eit
+It is common to calculate the answers to these and other similar questions in an MCMC-type analysis, when high-performance is paramount. Even outside of the context of likelihood analyses, the sheer size of present-day cosmological simulations presents a formidable computational challenge to evaluate such functions in a reasonable runtime. There is also the notorious complicating nuisance of properly accounting for the periodic boundary conditions of a simulation. Much research time has been spent by many different researchers writing their own private versions of these calculations, writing code that is not extensible as it was developed making hard assumptions that are only applicable to the immediate problem at hand.
 
 The {\tt mock\_observables} sub-package is designed to remedy this situation. This sub-package contains a large collection of functions that are commonly encountered when analyzing halo and galaxy catalogs, including:
 
@@ -216,7 +223,8 @@ The {\tt mock\_observables} sub-package is designed to remedy this situation. Th
 \item {\em group aggregation} calculations, e.g., calculating the total stellar mass of galaxies of a common group $M_{\ast}^{\rm tot},$
 \item {\em isolation criteria}, e.g., identifying those galaxies without a more massive companion inside some search radius,
 \item pairwise velocity statistics, e.g, the line-of-sight velocity dispersion as a function of projected distance $\sigma_{\rm los}(\rproj),$
-\item void probability function $P_{\rm void}(r).$
+\item void probability function $P_{\rm void}(r),$
+\item etc.
 \eit
 
 The \mockobs sub-package contains heavily optimized implementations of all the above functions, as well as a variety of others. Every function in \mockobs has a stable, user-friendly API that is consistently applied across the package. The docstring of all functions contains an explicit example of how to call the function, and in many cases there is a step-by-step tutorial at \url{http://halotools.readthedocs.io} showing how the function might be used in a typical analysis. Considerable effort has been taken to write \mockobs to be modular, so that users can easily borrow the algorithm patterns to write their own variation on the provided calculations.
@@ -255,12 +263,12 @@ Development of the code is managed with a {\em Fork and Pull} workflow. Briefly,
 
 Pull Requests to the {\tt master} branch are additionally subject to a requirement enforced by {\tt Coveralls}.\footnote{\url{https://coveralls.io}} This service performs a static analysis on the {\tt Halotools} code base and determines the portions of the code that are covered by the test suite, making it straightforward to identify logical branches whose behavior remains to be tested. {\tt Coveralls} issues a report for the fraction of the code base that is covered by the test suite; if the returned value of this fraction is smaller than the coverage fraction of the current version of {\tt master}, the Pull Request is not accepted. This ensures that test coverage can only improve as the code evolves and new features are added.
 
-Any time a bug is found in the code, either by {\tt Halotools} developers or users, a GitHub Issue is opened calling public attention to the problem. When the {\tt Halotools} developers have resolved the problem, a corresponding {\em regression test} becomes a permanent contribution to the code base. The regression test explicitly demonstrates the specific source of the problem, and contains a hyperlink to the corresponding GitHub issue. The test will fail when executed from the version of the code that had the problem, and will pass in the version with the fix. Regression testing helps to make it transparent how the bug was resolved and protects against the same bug from creeping back into the repository as the code evolves.
+Any time a bug is found in the code, either by {\tt Halotools} developers or users, a GitHub Issue is opened calling public attention to the problem. When the {\tt Halotools} developers have resolved the problem, a corresponding {\em regression test} becomes part of the code base. The regression test explicitly demonstrates the specific source of the problem, and contains a hyperlink to the corresponding GitHub issue. The test will fail when executed from the version of the code that had the problem, and will pass in the version with the fix. Regression testing helps to make it transparent how the bug was resolved and protects against the same bug from creeping back into the repository as the code evolves.
 
 \subsection{Documentation}
 \label{subsection:documentation}
 
-Documentation of the code base is generated with {\tt Sphinx}\footnote{\url{http://www.sphinx-doc.org}} and is hosted on {\tt Read the Docs}\footnote{\url{ https://readthedocs.org}} at \url{http://halotools.readthedocs.io}. The public repository \url{https://github.com/astropy/halotools} has a webhook set up so that whenever there is a change to the {\tt master} branch, the documentation is automatically rebuilt to reflect the most up-to-date version of {\tt master}.
+Documentation of the code base is generated with {\tt Sphinx}\footnote{\url{http://www.sphinx-doc.org}} and is hosted on {\tt ReadtheDocs}\footnote{\url{ https://readthedocs.org}} (RTD) at \url{http://halotools.readthedocs.io}. The public repository \url{https://github.com/astropy/halotools} has a webhook set up so that whenever there is a change to the {\tt master} branch, the documentation is automatically rebuilt to reflect the most up-to-date version of {\tt master}.\footnote{In fact, there are two versions of documentation available, {\em latest} and {\em stable}, and one can choose on RTD which one to read.}. 
 
 Every user-facing class, method and function in {\tt Halotools} has a docstring describing its general purpose, its inputs and outputs, and also providing an explicit example usage. The docstring for many functions with complex behavior comes with a hyperlink to a separate section of the documentation in which mathematical derivations and algorithm notes are provided. The documentation also includes a large number of step-by-step tutorials and example analyses. The goal of these tutorials is more than simple code demonstration: the tutorials are intended to be a pedagogical tool illustrating how to analyze simulations and study models of the galaxy--halo connection in an efficient and reproducible manner.
 
