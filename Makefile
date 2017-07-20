@@ -7,6 +7,7 @@ all :
 	pdflatex halotools
 	pdflatex halotools
 	pdflatex halotools
+	open halotools.pdf
 
 
 clean :
