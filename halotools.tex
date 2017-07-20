@@ -43,12 +43,12 @@
 
 
 
-\shorttitle{Presenting {\tt Halotools} v0.2}
+\shorttitle{{\tt Halotools} v0.2}
 \shortauthors{Hearin, Campbell, Tollerud, et al.}
 
 \begin{document}
 
-\title{High-Precision Forward Modeling of Large-Scale Structure: \\An open-source approach with Halotools}
+\title{Forward Modeling of Large-Scale Structure: \\An open-source approach with Halotools}
 
 \author{Andrew P. Hearin\altaffilmark{1}, Duncan Campbell\altaffilmark{2}, Erik Tollerud\altaffilmark{2,3},\\and\\
 Peter Behroozi\altaffilmark{4, 5}, Benedikt Diemer\altaffilmark{6},
@@ -114,8 +114,8 @@ This paper is not intended to be viewed as code documentation, which is availabl
 
 {\tt Halotools} is designed with a high degree of modularity, so that users can pick and choose the features that are suitable to their science applications. At the highest level, this modularity is reflected in the organization of the package into sub-packages. For {\tt Halotools} v0.2, there are three major sub-packages. The \sims sub-package described in \S\ref{subsection:sim_manager} is responsible for reducing ``raw" halo catalogs into efficiently organized fast-loading hdf5 files, and for creating and keeping track of a persistent memory of where the simulation data is stored on disk. The \emodels sub-package described in \S\ref{subsection:empirical_models} contains models of the galaxy--halo connection, as well as a flexible object-oriented platform for users to design their own models. The \mockobs sub-package described in \S\ref{subsection:mock_observables} contains a collection of functions that generate predictions for models in a manner that can be directly compared to astronomical observations. Many of the functions in \mockobs should also be of general use in the analysis of halo catalogs.
 
-Although these sub-packages are designed to work together, each individual sub-package has entirely stand-alone functionality that is intended to be useful even in the absence of the others. For example, while {\tt Halotools} provides pre-processed halo catalogs that are science-ready as soon as they are downloaded, use of {\tt Halotools}-provided catalogs is entirely optional and the package works equally well with alternative halo catalogs provided and processed by the user. The \emodels sub-package can be used to populate mock galaxies into the halos of any cosmological simulation, where the populated halos could be identified by any algorithm. The functions in the \mockobs sub-package accept simple point-data as inputs, and so these functions could be used to generate observational predictions for semi-analytical models that otherwise have no connection to {\tt Halotools}.
-In the subsections below we outline each of these sub-packages in turn, though we refer the reader to \url{http://halotools.readthedocs.io} for more comprehensive descriptions.
+Although these sub-packages are designed to work together, each individual sub-package has entirely stand-alone functionality that is intended to be useful even in the absence of the others. For example, while {\tt Halotools} provides pre-processed halo catalogs that are science-ready as soon as they are downloaded, use of {\tt Halotools}-provided catalogs is entirely optional and the package works equally well with alternative halo catalogs provided and processed by the user. The \emodels sub-package can be used to populate mock galaxies into the halos of any cosmological simulation, where the populated halos could be identified by any algorithm. The functions in the \mockobs sub-package accept simple point-data as inputs, and so these functions could be used to generate observational predictions for semi-analytical models that otherwise have no connection to {\tt Halotools}. We outline each of these sub-packages in the sections below.
+
 
 %---------------------------
 \subsection{Managing Simulation Data}
@@ -147,7 +147,7 @@ Using the {\tt Halotools} caching system is optional in every respect. Users who
 %---------------------------
 
 All {\tt Halotools} models of the galaxy--halo connection are contained in the \emodels sub-package. {\tt Halotools} models come in two categories: {\em composite models} and {\em component models}.
-A {\em composite model} is a complete description of the mapping(s) between dark matter halos and all properties of their resident galaxy population. A composite model provides sufficient information to populate an ensemble of halos with a Monte Carlo realization of a galaxy population. All composite models are built from a collection of independently-defined {\em component models}. A component model provides a map between dark matter halos and a single property of the resident galaxy population. Example component models include the stellar-to-halo mass relation, a Navarro-Frenk-White (NFW) radial profile for the satellite distribution, or the halo mass-dependence of the quenched fraction. We elaborate upon the structure of {\tt Halotools} models below, and remind the reader that there are extensive step-by-step guides on this material available at \url{http://halotools.readthedocs.io}.
+A {\em composite model} is a complete description of the mapping(s) between dark matter halos and all properties of their resident galaxy population. A composite model provides sufficient information to populate an ensemble of halos with a Monte Carlo realization of a galaxy population. All composite models are built from a collection of independently-defined {\em component models}. A component model provides a map between dark matter halos and a single property of the resident galaxy population. Example component models include the stellar-to-halo mass relation, a Navarro-Frenk-White (NFW) radial profile for the satellite distribution, or the halo mass-dependence of the quenched fraction. We elaborate upon the structure of {\tt Halotools} models below.
 
 \subsubsection{Model styles}
 \label{subsubsection:modelstyles}
@@ -177,7 +177,7 @@ The behavior of all {\tt Halotools} models is controlled by the {\tt model.param
 \begin{center}
 \includegraphics[width=8.3cm]{./FIGS/halotools_design.png}
 \caption{
-Cartoon example of how an HOD-style model can be built with the {\tt Halotools} factory design pattern; subhalo-based models can be built in a directly analogous fashion. Users select a set of {\em component model} features of their choosing, and compose them together into a {\em composite model} using the appropriate factory. Users wishing to quickly get up-and-running can instead select a prebuilt composite model that ships with the package. Either way, \url{http://halotools.readthedocs.io} contains extensive step-by-step tutorials and worked examples demonstrating how to use {\tt Halotools} to model the galaxy--halo connection.
+Cartoon example of how an HOD-style model can be built with the {\tt Halotools} factory design pattern; subhalo-based models can be built in a directly analogous fashion. Users select a set of {\em component model} features of their choosing, and compose them together into a {\em composite model} using the appropriate factory. Users wishing to quickly get up-and-running can instead select a prebuilt composite model that ships with the package.
 }
 \label{fig:modeling}
 \end{center}
@@ -230,7 +230,7 @@ The {\tt mock\_observables} sub-package is designed to remedy this situation. Th
 \eit
 The \mockobs sub-package contains heavily optimized implementations of all the above functions, as well as a variety of others. Figure \ref{fig:mockobs} provides a visual demonstration of the diversity of the available options.
 
-Every function in \mockobs has a stable, user-friendly API that is consistently applied across the package. The docstring of all functions contains an explicit example of how to call the function, and in many cases there is a step-by-step tutorial at \url{http://halotools.readthedocs.io} showing how the function might be used in a typical analysis. Considerable effort has been taken to write \mockobs to be modular, so that users can easily borrow the algorithm patterns to write their own variation on the provided calculations.
+Every function in \mockobs has a stable, user-friendly API that is consistently applied across the package. The docstring of all functions contains an explicit example of how to call the function, and in many cases there is a step-by-step tutorial in the documentation showing how the function might be used in a typical analysis. Considerable effort has been taken to write \mockobs to be modular, so that users can easily borrow the algorithm patterns to write their own variation on the provided calculations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
@@ -240,7 +240,7 @@ Every function in \mockobs has a stable, user-friendly API that is consistently 
 \includegraphics[width=8.3cm]{./FIGS/cluster_bcg_infall_velocity.png}
 \includegraphics[width=8.3cm]{./FIGS/radial_profile_halocat_tutorial_fig1.png}
 \caption{
-Four example calculations done with {\tt Halotools} demonstrating the diversity of the \mockobs sub-package. Each figure is part of a tutorial found in \url{http://halotools.readthedocs.io}, to which we refer the reader for details. Here we only point out that each panel demonstrates the result of a heavily optimized function with a user-friendly API requiring minimal setup. {\em Top left:} Three-dimensional correlation function of mock galaxies $\xi_{\rm gg}(r)$ split into contributions from pairs of galaxies occupying a common halo (1-halo term), and pairs in distinct halos (2-halo term). {\em Top right:} Projected correlation function $w_{\rm p}(\rproj)$ of star-forming and quiescent galaxies, as well as their cross-correlation. {\em Bottom left:} Mean pairwise radial velocity of galaxies in the neighborhood of a cluster BCG. {\em Bottom right:} As a function of the $R_{\rm vir}-$normalized distance to a cluster, we show the mean mass accretion rate of nearby lower-mass subhalos.
+Four example calculations done with {\tt Halotools} demonstrating the diversity of the \mockobs sub-package. {\em Top left:} Three-dimensional correlation function of mock galaxies $\xi_{\rm gg}(r)$ split into contributions from pairs of galaxies occupying a common halo (1-halo term), and pairs in distinct halos (2-halo term). {\em Top right:} Projected correlation function $w_{\rm p}(\rproj)$ of star-forming and quiescent galaxies, as well as their cross-correlation. {\em Bottom left:} Mean pairwise radial velocity of galaxies in the neighborhood of a cluster BCG. {\em Bottom right:} As a function of the $R_{\rm vir}-$normalized distance to a cluster, we show the mean mass accretion rate of nearby lower-mass subhalos.
 }
 \label{fig:mockobs}
 \end{center}
@@ -291,7 +291,7 @@ We have presented the first stable release of the {\tt Halotools} package (v0.2)
 \item End-to-end support for reducing halo catalogs and caching them as fast-loading hdf5 files.
 \eit
 
-We offer several examples below of typical use-cases for which {\tt Halotools} was designed. This list is not intended to be complete, but simply to illustrate the full-featured nature of the package, which includes functionality supporting both galaxy evolution science as well as cosmological simulation analysis. We remind the reader that \url{https://halotools.readthedocs.io} contains extensive tutorials and step-by-step guides that can be used as examples for how to carry out each of the example studies below and more.
+We offer several examples below of typical use-cases for which {\tt Halotools} was designed. This list is not intended to be complete, but simply to illustrate the full-featured nature of the package, which includes functionality supporting both galaxy evolution science as well as cosmological simulation analysis. The documentation hosted at \url{https://halotools.readthedocs.io} contains extensive tutorials and step-by-step guides that can be used as examples for how to carry out each of the example studies below and more.
 
 \ben
 \item Constrain traditional HOD model parameters with an MCMC-type analysis of observational measurements of projected galaxy clustering $w_{\rm p}(\rproj).$
