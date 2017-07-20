@@ -4,3 +4,5 @@
 *.bbl
 *.blg
 halotoolsNotes.bib
+.ipynb_checkpoints/*
+Untitled*.ipynb
