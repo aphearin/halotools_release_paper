@@ -50,29 +50,30 @@
 
 \title{Forward Modeling of Large-Scale Structure: \\An open-source approach with Halotools}
 
-\author{Andrew~P.~Hearin\altaffilmark{1}, Duncan~Campbell\altaffilmark{2}, Erik~Tollerud\altaffilmark{2,3},\\and\\
-Peter~Behroozi\altaffilmark{4, 5}, Benedikt~Diemer\altaffilmark{6},
-Nathan~J.~Goldbaum\altaffilmark{7}, Elise~Jennings\altaffilmark{8,9}, Alexie~Leauthaud\altaffilmark{10}, Yao-Yuan~Mao\altaffilmark{11,12},
-Surhud~More\altaffilmark{10}, John~Parejko\altaffilmark{13}, Manodeep~Sinha\altaffilmark{14,15}, Brigitta~Sip\H{o}cz\altaffilmark{16,17},
-Andrew~Zentner\altaffilmark{12}
+\author{Andrew~P.~Hearin\altaffilmark{1,2}, Duncan~Campbell\altaffilmark{3}, Erik~Tollerud\altaffilmark{3,4}\\and\\
+Peter~Behroozi\altaffilmark{5,6}, Benedikt~Diemer\altaffilmark{7},
+Nathan~J.~Goldbaum\altaffilmark{8}, Elise~Jennings\altaffilmark{9,10}, Alexie~Leauthaud\altaffilmark{11}, Yao-Yuan~Mao\altaffilmark{12,13},
+Surhud~More\altaffilmark{11}, John~Parejko\altaffilmark{14}, Manodeep~Sinha\altaffilmark{15,16}, Brigitta~Sip\H{o}cz\altaffilmark{17,18},
+Andrew~Zentner\altaffilmark{13}
 }
 \altaffiltext{1}{Yale Center for Astronomy \& Astrophysics, Yale University, New Haven, CT}
-\altaffiltext{2}{Department of Astronomy, Yale University, P.O. Box 208101, New Haven, CT}
-\altaffiltext{3}{Space Telescope Science Institute, Baltimore, MD 21218, USA}
-\altaffiltext{4}{Department of Astronomy, University of California, Berkeley, Berkeley CA 94720, USA}
-\altaffiltext{5}{Hubble Fellow}
-\altaffiltext{6}{Institute for Theory and Computation, Harvard-Smithsonian Center for Astrophysics, 60 Garden St., Cambridge, MA 02138, USA}
-\altaffiltext{7}{National Center for Supercomputing Applications, University of Illinois at Urbana-Champaign, 1205 W. Clark St., Urbana, IL 61801, USA}
-\altaffiltext{8}{Center for Particle Astrophysics, Fermi National Accelerator Laboratory MS209, P.O. Box 500, Kirk Rd. \& Pine St., Batavia, IL 60510-0500}
-\altaffiltext{9}{Kavli Institute for Cosmological Physics, Enrico Fermi Institute, University of Chicago, Chicago, IL 60637}
-\altaffiltext{10}{Kavli IPMU (WPI), UTIAS, The University of Tokyo, Kashiwa, Chiba 277-8583, Japan}
-\altaffiltext{11}{Kavli Institute for Particle Astrophysics and Cosmology and Department of Physics, Stanford University, Stanford, CA 94305, USA}
-\altaffiltext{12}{Department of Physics and Astronomy and Pittsburgh Particle Physics, Astrophysics, and Cosmology Center (PITT PACC),\\{}University of Pittsburgh, Pittsburgh, PA 15260, USA}
-\altaffiltext{13}{University of Washington, Dept. of Astronomy, Box 351580, Seattle, WA 98195}
-\altaffiltext{14}{Department of Physics \& Astronomy, 6301 Stevenson Center, Vanderbilt University, Nashville, TN 37235, USA}
-\altaffiltext{15}{Centre for Astrophysics \& Supercomputing, Swinburne University of Technology, 1 Alfred St, Hawthorn, VIC 3122, Australia}
-\altaffiltext{16}{Centre for Astrophysics Research, University of Hertfordshire,College Lane, Hatfield, AL10 9AB, UK}
-\altaffiltext{17}{Institute of Astronomy, University of Cambridge, Madingley Road, Cambridge, CB3 0HA, UK}
+\altaffiltext{2}{Argonne National Laboratory, Argonne, IL, USA 60439, USA}
+\altaffiltext{3}{Department of Astronomy, Yale University, P.O. Box 208101, New Haven, CT}
+\altaffiltext{4}{Space Telescope Science Institute, Baltimore, MD 21218, USA}
+\altaffiltext{5}{Department of Astronomy, University of California, Berkeley, Berkeley CA 94720, USA}
+\altaffiltext{6}{Hubble Fellow}
+\altaffiltext{7}{Institute for Theory and Computation, Harvard-Smithsonian Center for Astrophysics, 60 Garden St., Cambridge, MA 02138, USA}
+\altaffiltext{8}{National Center for Supercomputing Applications, University of Illinois at Urbana-Champaign, 1205 W. Clark St., Urbana, IL 61801, USA}
+\altaffiltext{9}{Center for Particle Astrophysics, Fermi National Accelerator Laboratory MS209, P.O. Box 500, Kirk Rd. \& Pine St., Batavia, IL 60510-0500}
+\altaffiltext{10}{Kavli Institute for Cosmological Physics, Enrico Fermi Institute, University of Chicago, Chicago, IL 60637}
+\altaffiltext{11}{Kavli IPMU (WPI), UTIAS, The University of Tokyo, Kashiwa, Chiba 277-8583, Japan}
+\altaffiltext{12}{Kavli Institute for Particle Astrophysics and Cosmology and Department of Physics, Stanford University, Stanford, CA 94305, USA}
+\altaffiltext{13}{Department of Physics and Astronomy and Pittsburgh Particle Physics, Astrophysics, and Cosmology Center (PITT PACC),\\{}University of Pittsburgh, Pittsburgh, PA 15260, USA}
+\altaffiltext{14}{University of Washington, Dept. of Astronomy, Box 351580, Seattle, WA 98195}
+\altaffiltext{15}{Department of Physics \& Astronomy, 6301 Stevenson Center, Vanderbilt University, Nashville, TN 37235, USA}
+\altaffiltext{16}{Centre for Astrophysics \& Supercomputing, Swinburne University of Technology, 1 Alfred St, Hawthorn, VIC 3122, Australia}
+\altaffiltext{17}{Centre for Astrophysics Research, University of Hertfordshire,College Lane, Hatfield, AL10 9AB, UK}
+\altaffiltext{18}{Institute of Astronomy, University of Cambridge, Madingley Road, Cambridge, CB3 0HA, UK}
 
 
 %----------------------------------------------------------------
@@ -310,6 +311,8 @@ We would like to conclude this paper with an invitation. As can be seen from the
 \section{acknowledgments}
 
 APH would like to express profound gratitude to the Yale Center for Astronomy and Astrophysics, and Meg Urry in particular, for their carte blanche support for this long-term and extremely labor-intensive project. Without the creative freedom offered by the YCAA Prize fellowship, there would be no {\tt Halotools}.
+
+Work at Argonne National Laboratory was supported under U.S. Department of Energy contract DE-AC02-06CH11357.
 
 APH gives special thanks to Jim Ford for every last groove of {\em Harlan County}. APH is grateful to Nikhil Padmanabhan and Frank van den Bosch for invaluable and continuing guidance. Thanks to Doug Watson and Matt Becker for productive discussions at a formative stage of {\tt Halotools} development, and Yu Feng for help in optimizing the \mockobs sub-package and comments on an early draft of this paper. Thanks to Andrey Kravtsov for help with establishing compatibility in Windows environments.
 
